@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-箭头函数的this</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //this 指向调用者 
+    // console.log(this)  // window
+    // 普通函数
+    /* function fn(){
+        console.log(this)  // window
+    }
+    fn() */
+
+    // 对象的函数
+    /* const obj = {
+        name:'andy',
+        sayHi(){
+            console.log(this)   //obj
+        }
+    }
+    obj.sayHi() */
+
+// 箭头函数 this  指向 上一层作用域的this
+const fn = ()=>{
+    console.log(this)   // window
+}
+fn()
+
+    // 对象方法的箭头函数的this
+/* const obj = {
+    name:'lily',
+    styHi:()=>{
+        console.log(this)  // window
+    }
+}
+obj.styHi() */
+
+    const obj = {
+        uname:'lily',
+        sayHi:function(){
+            console.log('sayHi',this)
+            let i = 10
+            const count = ()=>{
+                console.log('count',this)  // this 指向 obj
+            }
+            count()
+        }
+    }
+    obj.sayHi()
+
+    
+</script>
+</html>

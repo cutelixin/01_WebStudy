@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-递归函数</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    // 如果一个函数在内部可以调用其本身，那么这个函数就是递归函数
+    /* let i = 0
+    function fn(){
+        console.log('第' + i + '次')
+        if(i >= 6){
+            return
+        }
+        i++
+        fn()
+    }
+    fn() */
+
+    const div = document.querySelector('div')
+    function getTime(){
+        div.innerHTML = new Date().toLocaleString()
+        setTimeout(getTime,1000)
+    }
+    getTime()
+    
+</script>
+</html>

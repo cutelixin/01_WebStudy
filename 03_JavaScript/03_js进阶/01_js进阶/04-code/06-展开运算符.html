@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-展开运算符</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 展开运算符
+// 不会修改原数组
+// 使用场景 1.求数组最大值和最小值 2.合并数组
+const arr1 = [1,2,3]
+// ...arr1 === 1,2,3
+console.log(Math.max(...arr1))        
+console.log(Math.min(...arr1))   
+
+// 合并数组
+const arr2 = [4,5,6]
+console.log([...arr1,...arr2])
+ 
+</script>
+</html>

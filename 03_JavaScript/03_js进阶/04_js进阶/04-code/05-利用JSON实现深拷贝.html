@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-利用JSON实现深拷贝</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const obj = {
+        name:'pink',
+        age:19,
+        family:{
+            peppa:'peppa',
+            mama:'mama'
+        },
+        hobby:['succer','baseball']
+    }
+    const str = JSON.stringify(obj)
+    const o = JSON.parse(str)
+    o.age = 19
+    o.family.peppa = '佩奇'
+    o.hobby[0] = 'watch tv'
+    console.log('o',o)
+    console.log('obj',obj)
+</script>
+</html>

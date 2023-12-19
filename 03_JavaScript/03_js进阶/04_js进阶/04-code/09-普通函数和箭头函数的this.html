@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-普通函数和箭头函数的this</title>
+</head>
+<body>
+
+    <button>btn</button>
+
+    <script>
+        // 普通函数：谁调用我，我就指向谁
+        // 严格模式下指向undefined
+
+        /* console.log(this)  // window
+
+        function fn(){
+            console.log(this) // window
+        }
+        fn()
+
+        setTimeout(function(){
+            console.log(this) // window
+        }, 1000);
+
+        document.querySelector('button').addEventListener('click',function(){
+            console.log(this) // 指向 button
+        })
+
+        const obj = {
+            sayHi(){
+                console.log(this) // 指向 obj
+            }
+        }
+        obj.sayHi() */
+
+// 箭头函数：没有this，箭头函数的this引用为最近函数的this
+// 构造函数，事件绑定 不推荐使用箭头函数
+// 在原型对象上绑定函数，不推荐使用箭头函数
+
+const user = {
+    name:'peppa',
+    walk:()=>{
+        console.log(this)
+    }
+}
+user.walk()     // window
+
+document.querySelector('button').addEventListener('click',()=>{
+    console.log(this)   // window
+})
+
+
+
+    </script>
+</body>
+</html>

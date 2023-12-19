@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/inputnumber.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>购物车</title>
+</head>
+
+<body>
+  <div class="app-container" id="app">
+    <!-- 顶部banner -->
+    <div class="banner-box"><img src="http://autumnfish.cn/static/fruit.jpg" alt="" /></div>
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+      <span>🏠</span>
+      /
+      <span>购物车</span>
+    </div>
+    <!-- 购物车主体 -->
+    <div class="main">
+      <div class="table">
+        <!-- 头部 -->
+        <div class="thead">
+          <div class="tr">
+            <div class="th">选中</div>
+            <div class="th th-pic">图片</div>
+            <div class="th">单价</div>
+            <div class="th num-th">个数</div>
+            <div class="th">小计</div>
+            <div class="th">操作</div>
+          </div>
+        </div>
+        <!-- 身体 -->
+        <div class="tbody">
+
+          <!-- 渲染需要的行 -->
+          <!-- 
+            <div class="tr">
+            <div class="td"><input type="checkbox" checked /></div>
+            <div class="td"><img src="http://autumnfish.cn/static/火龙果.png" alt="" /></div>
+            <div class="td">6</div>
+            <div class="td">
+              <div class="my-input-number">
+                <button class="decrease"> - </button>
+                <span class="my-input__inner">2</span>
+                <button class="increase"> + </button>
+              </div>
+            </div>
+            <div class="td">12</div>
+            <div class="td"><button class="del">删除</button></div>
+          </div> 
+        -->
+
+        </div>
+      </div>
+      <!-- 底部 -->
+      <div class="bottom">
+        <!-- 全选 -->
+        <label class="check-all">
+          <input type="checkbox" />
+          全选
+        </label>
+        <div class="right-box">
+          <!-- 所有商品总价 -->
+          <span class="price-box">总价&nbsp;&nbsp;:&nbsp;&nbsp;¥&nbsp;<span class="price">24</span></span>
+          <!-- 结算按钮 -->
+          <button class="button pay">结算( 6 )</button>
+        </div>
+      </div>
+    </div>
+    <!-- 空车 -->
+    <div class="empty">🛒空空如也</div>
+  </div>
+  <script>
+    let dataArr = [
+      {
+        id: 1,
+        icon: 'http://autumnfish.cn/static/火龙果.png',
+        isChecked: true,
+        num: 2,
+        price: 6,
+      },
+      {
+        id: 2,
+        icon: 'http://autumnfish.cn/static/荔枝.png',
+        isChecked: false,
+        num: 7,
+        price: 20,
+      },
+      {
+        id: 3,
+        icon: 'http://autumnfish.cn/static/榴莲.png',
+        isChecked: false,
+        num: 3,
+        price: 40,
+      },
+      {
+        id: 4,
+        icon: 'http://autumnfish.cn/static/鸭梨.png',
+        isChecked: true,
+        num: 10,
+        price: 3,
+      },
+      {
+        id: 5,
+        icon: 'http://autumnfish.cn/static/樱桃.png',
+        isChecked: false,
+        num: 20,
+        price: 34,
+      },
+    ]
+
+    // 获取元素 
+    const tbody = document.querySelector('.tbody')
+    const checkAll = document.querySelector('.check-all input')
+
+    // 1.渲染函数
+    function render(dataArr){
+        // 判断购物车是为空
+        const empty = document.querySelector('.empty')
+        empty.style.display = dataArr.length ? 'none' : 'block'
+      
+        let html = dataArr.map(({id,icon,isChecked,num,price})=>{
+            return `
+            <div class="tr" data-id="${id}">
+              <div class="td"><input type="checkbox" ${isChecked ? 'checked' : ''} /></div>
+              <div class="td"><img src="${icon}" alt="img" /></div>
+              <div class="td">${price}</div>
+              <div class="td">
+                <div class="my-input-number">
+                  <button class="decrease"> - </button>
+                  <span class="my-input">${num}</span>
+                  <button class="increase"> + </button>
+                </div>
+              </div>
+              <div class="td">${num*price}</div>
+              <div class="td"><button class="button del">删除</button></div>
+            </div> 
+            `
+        }).join('')
+
+        document.querySelector('.tbody').innerHTML = html
+
+        // 全选和反选
+        checkAll.checked = dataArr.length? dataArr.every(item=>item.isChecked) : false
+        // 计算总额和总数量功能
+        // 结算的num
+        const count = dataArr.reduce((pre,cur)=>pre+(cur.isChecked ? cur.num: 0),0)
+        document.querySelector('.pay').innerHTML = `结算( ${count} )`
+        // 总价
+        const total = dataArr.reduce((pre,cur)=>pre+(cur.isChecked ? cur.num * cur.price : 0),0)
+        document.querySelector('.price').innerHTML = total.toFixed(2)
+    }
+    render(dataArr)
+
+    // 1. 全选反选功能
+    checkAll.addEventListener('click',function(e){
+      dataArr.forEach(item=>item.isChecked = this.checked)
+      render(dataArr)
+    })
+
+    tbody.addEventListener('click',function(e){
+      const id = +e.target.parentNode.parentNode.dataset.id
+      const {className,tagName} = e.target
+
+      // 删除功能
+      if(className.includes('del')){
+        dataArr = dataArr.filter(item=>item.id!=id)
+        render(dataArr)
+      }
+
+      // 小复选框业务是否全选开控制总的复选框
+      if(tagName === 'INPUT'){
+          dataArr.forEach(item=>{
+            if(item.id === id){item.isChecked = !item.isChecked}
+          })
+          render(dataArr)
+        }
+
+        if(className === 'decrease' || className === 'increase'){
+            const parent = e.target.parentNode
+            const myInput = parent.querySelector('.my-input')
+            const iid = +e.target.parentNode.parentNode.parentNode.dataset.id
+            let count = Number(myInput.innerHTML)
+              if(className === 'decrease'){
+                  if(count<=1) return alert('不可再减少商品数量')
+                  count --
+              }else if(className === 'increase'){
+                  count++
+              }
+              dataArr.forEach(item=>{
+                if(item.id === iid){
+                  item.num = count
+                }
+              })
+              render(dataArr)
+          }
+      })
+
+  </script>
+</body>
+
+</html>

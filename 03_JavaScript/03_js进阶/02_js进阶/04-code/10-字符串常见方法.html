@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-字符串常见方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // split 把字符串转换为数组
+    // join  把数组转换为字符串
+    /* const str = 'pink,red'
+    const res = str.split(',')
+    console.log(res)
+    const str1 = '2022-2-3'
+    const arr2 = str1.split('-')
+    console.log(arr2) */
+
+    // 字符串截取 substring(开始索引号,[结束索引号]) 左闭右开 结束的索引号不包含截取部分 
+    /* const str = 'mozilla'
+    console.log(str.substring(0,3)) */
+
+    // startsWith 检测是否以某字符开头
+    /* const str = "pink老师上课中";
+    console.log(str.startsWith("pink")); // true
+    console.log(str.startsWith('老师'))  // false */
+
+    // includes 判断一个字符串是否包含在另一个字符串中 (区分大小写)
+    /* const str = 'ja oder nein'
+    console.log(str.includes('ja')) // true
+    console.log(str.includes('Ja')) // false
+    console.log(str.includes(''))   // true */
+
+    // String() 强制转换为字符串
+    // toString() 转换为字符串
+    const num = 1222
+    console.log(String(num))
+    console.log(num.toString())
+</script>
+</html>

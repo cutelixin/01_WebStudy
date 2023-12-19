@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-try、catch捕获异常</title>
+</head>
+<body>
+    <p>123</p>
+</body>
+<script>
+    function fn(){
+        try{
+            // 可能发送错误的代码 要写try
+            const p = document.querySelector('p')
+            p.style.color = 'red'
+            console.log(1)
+        }catch(err){
+            // 拦截错误，提示浏览器提供的错误信息，但不中断程序的执行
+            console.log(err.message)
+            console.log(2)
+            return
+            // throw new Error(err.message)
+        }
+        // 不管代码有没有错，一定会执行的代码
+        finally{
+            console.log(3)
+        }
+        console.log('no erro')
+    }
+    fn()
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-创建对象的方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1.方法一
+    // const obj = {}
+
+    // 2.方法二
+    /* const obj = new Object({name:'lily'})
+    console.log(obj) */
+
+    // 3.方法三：构造函数
+    // 两个约定：1.函数首字母大写   2.只能由 'new' 操作符来执行
+
+    // 创建构造函数
+    function Pig(name,age,gender){
+        this.name = name
+        this.age = age
+        this.gender = gender
+    }
+    const peiqi = new Pig('peiqi',6,'man')
+    const geoge = new Pig('geoge',8,'woman')
+    const mom = new Pig('MOM',29,'woman')
+    console.log('peiqi',peiqi)
+    console.log('geoge',geoge)
+</script>
+</html>

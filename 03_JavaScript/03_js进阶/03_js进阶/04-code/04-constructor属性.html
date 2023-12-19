@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-constructor属性</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // constructor 构造函数
+    // 指向构造函数
+    function Star(){
+
+    }
+    const ldh = new Star()
+    // console.log(Star.prototype)
+    console.log(Star.prototype.constructor === Star)    //true
+
+    /* Star.prototype.sing = function(){
+        console.log('singing')
+    }
+
+    Star.prototype.dance = function(){
+        console.log('dancing')
+    } 
+    console.log(Star.prototype)*/
+
+    Star.prototype = {
+        // 重新指回创造这个原型对象的 构造函数
+        constructor:Star,
+        sing:function(){
+            console.log('singing')
+        },
+        dance:function(){
+            console.log('dancing')
+        }
+    }
+    console.log(Star.prototype)
+
+</script>
+</html>

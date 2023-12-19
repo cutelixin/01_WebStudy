@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-箭头函数的参数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 利用箭头函数求和
+    // 箭头函数没有 动态参数 只有 剩余参数
+    const getSum = (...arr)=>{
+        let sum = 0
+        for(let i = 0;i<arr.length;i++){
+            sum += arr[i]
+        }
+        return sum
+    }
+
+    console.log(getSum(1,2,34))
+    
+</script>
+</html>

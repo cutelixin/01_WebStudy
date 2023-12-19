@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13-节流防抖素材</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+      color: #fff;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+
+  <script src="./lodash.min.js"></script>
+  <script>
+      // 防抖：单位时间内，频繁触发事件，只执行最后一次 
+      // 利用防抖实现性能优化
+      // 1.lodash提供的防抖
+      // 2.手写防抖函数
+
+
+  // 需求，鼠标在盒子上移动 里面的数字会发生变化
+  const box = document.querySelector('.box')
+  let i = 1
+  function mouseMove(){
+    //如果存在大量消耗性能的代码，比如 dom操作 比如数据处理 可能造成卡顿 
+    box.innerHTML = i++
+  }
+  // 利用lodash实现防抖
+  // 语法：_.debounce(fun,时间)
+  box.addEventListener('mousemove',_.debounce(mouseMove,500))
+
+    
+  </script>
+</body>
+
+</html>

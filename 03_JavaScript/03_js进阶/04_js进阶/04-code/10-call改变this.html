@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-call改变this</title>
+</head>
+<body>
+</body>
+<script>
+    const obj = {
+        name:'pink'
+    }
+    function fn(x,y){
+        console.log(this)
+        console.log(x+y)
+    }
+    // call的作用 call(this的指向,实参,实参。。。)
+    // 1.调用函数
+    // 2.改变this的指向
+    fn.call(obj,1,2)
+</script>
+</html>

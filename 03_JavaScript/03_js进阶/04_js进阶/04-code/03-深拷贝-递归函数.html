@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-深拷贝-递归函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 面试问题：如何解决深拷贝
+    /* 1.深拷贝的作用为，新拷贝出来的对象不会影响旧对象，想要实现深拷贝的话得用到 函数递归
+       2.当我们进行普通的拷贝的时候，直接调用函数拷贝就行，如果遇到拷贝数据类型为数组或者对象，
+        则需要再次调用递归函数。
+       3.判断条件需要先数组后对象。 */
+
+    const obj = {
+        name:'pink',
+        age:19,
+        family:{
+            peppa:'peppa',
+            mama:'mama'
+        },
+        hobby:['succer','baseball']
+    }
+
+    const o = {}
+    function deepCopy(newObj,oldObj){
+        for(let k in oldObj){
+            // 处理数组问题  一定先写数组 再写 对象
+            if(oldObj[k] instanceof Array){
+                 newObj[k] = []
+                 deepCopy(newObj[k],oldObj[k])
+            }else if(oldObj[k] instanceof Object){
+                newObj[k] = {}
+                deepCopy(newObj[k],oldObj[k])
+            }else{
+                newObj[k] = oldObj[k]
+            }
+        }
+    }   
+    deepCopy(o,obj)
+    o.age = 20
+    o.family.peppa = '佩奇'
+    console.log('o',o)  
+    console.log('obj',obj)
+</script>
+</html>

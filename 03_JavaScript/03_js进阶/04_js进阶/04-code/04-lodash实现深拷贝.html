@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-lodash实现深拷贝</title>
+    <script src="./lodash.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    const obj = {
+        name:'pink',
+        age:19,
+        family:{
+            peppa:'peppa',
+            mama:'mama'
+        },
+        hobby:['succer','baseball']
+    }
+
+    const o = _.cloneDeep(obj)
+    o.age = 20
+    o.family.peppa = '佩奇'
+    o.hobby[0] = 'watch peppa pig'
+    console.log('o',o)
+    console.log('obj',obj)
+</script>
+</html>

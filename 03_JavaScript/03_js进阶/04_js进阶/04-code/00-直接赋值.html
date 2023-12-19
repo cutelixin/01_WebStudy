@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00-直接赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 直接赋值 存在的问题：修改数据会改变原数组
+    const obj = {
+        name:'lily',
+        age:10
+    }
+
+    const o = obj
+    o.age = 100
+    console.log('o',o)      // {name:'lily',age:100}
+    console.log('obj',obj)  // {name:'lily',age:100}
+</script>
+</html>

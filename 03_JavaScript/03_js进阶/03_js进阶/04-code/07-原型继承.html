@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-原型继承</title>
+</head>
+<body>
+    <script>
+        /* const Person = {
+            eyes:2,
+            haed:1
+        } */
+        function Person(){
+            this.eyes = 2
+            this.head = 1
+        }
+        // woman 构造函数
+        function Woman(){}
+        // Woman 通过原型来继承 Person
+        // 父构造函数（父类） 子构造函数（子类）
+        // 子类的原型 = new 父类
+        Woman.prototype = new Person()
+        // 指回原来的构造函数
+        Woman.prototype.constructor = Woman
+
+        Woman.prototype.baby = function(){console.log('baby')}
+
+        const red = new Woman()
+        console.log('red',red)
+
+        function Man(){}
+        Man.prototype = new Person()
+        Man.prototype.constructor = Man
+
+        const pink = new Man()
+        console.log('pink',pink)
+    </script>
+</body>
+</html>

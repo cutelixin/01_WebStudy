@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-原型对象的this</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // this的指向：谁调用指向谁
+    let that
+    function Star(name,age){
+        that = this
+        this.name = name
+        this.age = age
+    }
+
+    const ldh = new Star('刘德华',55)
+    console.log(that === ldh)   //  true
+
+    Star.prototype.sing = function(){
+        that = this
+        console.log('singing')
+    }
+
+    ldh.sing()
+    console.log(that === ldh)   // true
+</script>
+</html>

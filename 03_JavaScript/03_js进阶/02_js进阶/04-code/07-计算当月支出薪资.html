@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-计算当月支出薪资</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const arr = [
+        {
+            name:'张三',
+            salary:10000
+        },
+        {
+            name:'李四',
+            salary:10000
+        },
+        {
+            name:'王五',
+            salary:10000
+        },
+    ]
+
+    /* const total = arr.reduce((pre,cur)=> pre + cur.salary,0)
+    console.log(total) */
+
+    // 需求：每个人涨薪30%
+    const total = arr.reduce((pre,cur)=> pre + cur.salary * 1.3 ,0)
+    console.log(total)
+</script>
+</html>

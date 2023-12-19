@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-验证构造函数原型实例对象三者关系</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person(name){
+        this.name = name
+    }
+
+    const peppa = new Person('peppa')
+
+    // 原型对象的属性 constructor 指向 构造函数
+    console.log(Person.prototype.constructor === Person)
+    // 实例对象的属性对象原型 __proto__ 指向 原型对象 prototype
+    console.log(peppa.__proto__ === Person.prototype)
+    // __proto__的属性constructor 指向构造函数
+    console.log(peppa.__proto__.constructor === Person)
+    
+</script>
+</html>

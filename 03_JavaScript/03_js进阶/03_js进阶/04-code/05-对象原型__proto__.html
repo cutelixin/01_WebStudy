@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-对象原型__proto__</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Star(){}
+
+    const ldh = new Star()
+    // 实例对象的属性 对象原型 __proto__
+    console.log(ldh.__proto__)
+    // 对象原型 __proto__ 指向 构造函数的原型对象 prototype
+    console.log(ldh.__proto__ === Star.prototype)
+    // 对象原型 __proto__ 的属性 constructor 指向构造函数
+    console.log(ldh.__proto__.constructor === Star)
+</script>
+</html>

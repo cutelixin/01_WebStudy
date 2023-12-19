@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-bind</title>
+</head>
+<body>
+    <button>点击</button>
+</body>
+<script>
+    
+    const obj = {
+        name:'peppa'
+    }
+
+    // bind的使用
+    // 1.不会调用函数，但会返回一个函数，返回的 函数的this 指向被改变
+    // 2.能改变this指向
+
+    function fn(x,y){
+        console.log(this)
+        console.log(x,y)
+    }
+
+    const fun = fn.bind(obj,1,2)
+    fun()
+
+    // 需求，有一个按钮，点击里面就禁用，两秒钟开启
+    const btn = document.querySelector('button')
+    btn.addEventListener('click',function(){
+        this.disabled = true
+        setTimeout(function() {
+            // 在这个普通函数里面，我们要this的指向从window改为btn
+            this.disabled = false
+        }.bind(this), 2000);
+    })
+</script>
+</html>

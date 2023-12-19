@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16-手写节流函数</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+      color: #fff;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script>
+      const box = document.querySelector('.box')
+      let i = 0
+      function mouseMove(){
+          box.innerHTML = i++
+      }
+
+      //手写节流函数
+      // 1.声明一个定时器变量
+      // 2.当鼠标每次滑动都先判断是否存在定时器，如果有定时器则不开启新的定时器
+      // 3.如果没有定时器则开启定时器，存储在变量里面
+      // 3.1 定时器里面调用执行的函数
+      // 3.2 定时器里面要把定时器清空
+      
+      function throttle(fn,time){
+        let timer = null
+        return function(){
+              if(!timer){
+                  timer = setTimeout(() => {
+                      fn()
+                      // 在 setTimeout 中是无法 (clearTimeout) 清除定时器的。
+                      // 因为定时器在运作时，所以使用 timer = null
+                      timer = null
+                  }, time);
+              }
+          }
+      }
+
+      box.addEventListener('mousemove',throttle(mouseMove,3000))
+  </script>
+</body>
+
+</html>

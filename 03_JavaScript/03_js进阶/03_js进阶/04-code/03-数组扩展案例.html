@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-数组扩展案例</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 求最大值和总和
+    const arr = [1,2,3]
+
+    Array.prototype.max = function(){
+        // 展开运算符
+        return Math.max(...this)
+        // 原型函数里面的this指向 实例对象
+    }
+    console.log( arr.max())
+
+    Array.prototype.min = function(){
+        // 展开运算符
+        return Math.min(...this)
+        // 原型函数里面的this指向 实例对象
+    }
+
+    console.log( arr.min()) 
+
+    // 求和方法
+    Array.prototype.sum = function() {
+        return this.reduce((pre,cur)=>pre+cur,0)
+    }
+
+    console.log( arr.sum())
+
+</script>
+</html>

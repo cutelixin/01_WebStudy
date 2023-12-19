@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-Object静态的方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 方法一
+    const o = {name:'佩奇',age:6}
+    /* for(let key in o){
+        console.log(key,o[key])
+    } */
+
+    // 返回全部属性名
+    console.log(Object.keys(o))
+    // 返回全部的属性值
+    console.log(Object.values(o))
+    // 拷贝对象 Object.assign(拷贝给谁,拷贝谁)
+    // 使用场景：给对象添加属性
+    const obj = {}
+    Object.assign(obj,o)
+    
+    Object.assign(obj,{gender:'woman'})
+    
+    console.log(obj)
+</script>
+</html>

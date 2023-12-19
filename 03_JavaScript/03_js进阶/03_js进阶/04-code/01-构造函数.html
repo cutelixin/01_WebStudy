@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-构造函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //构造函数存在浪费内存的问题
+    /* function Star(name,age){
+        this.name = name
+        this.age = age
+        this.sing = function(){
+            console.log('singing')
+        }
+    }
+
+    const ldh = new Star('刘德华',55)
+    const zxy = new Star('张学友',65)
+
+    console.log(ldh.sing === zxy.sing)  // false */
+    
+    // 解决方法，在构造函数的prototype属性中添加通用的方法
+    // 构造函数 公共的方法和属性    封装到 Star 构造函数里面
+    // 1.公共的属性写在构造函数里面
+    function Star(name,age){
+        this.name = name
+        this.age = age
+    }
+
+    // 2.公共的方法写在原型对象身上
+    const ldh = new Star('刘德华',55)
+    const zxy = new Star('张学友',65)
+
+    Star.prototype.sing = function(){
+        console.log('singing')
+    }
+
+    console.log(ldh.sing === zxy.sing)  // true
+</script>
+</html>

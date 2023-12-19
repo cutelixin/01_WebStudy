@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15-lodash实现节流</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+      color: #fff;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="box"></div>
+
+<script src="./lodash.min.js"></script>
+<script>
+      // 节流：单位时间内。频繁触发，只执行一次
+      // 使用场景：鼠标移动，页面尺寸缩放resize，滚动条滚动scroll
+      const box = document.querySelector('.box')
+      let i = 0
+      function mouseMove(){
+          box.innerHTML = i++
+      }
+      // 利用lodash实现节流
+      // 语法：_.throttle(函数,时间)
+      box.addEventListener('mousemove',_.throttle(mouseMove,3000))
+</script>
+</body>
+
+</html>

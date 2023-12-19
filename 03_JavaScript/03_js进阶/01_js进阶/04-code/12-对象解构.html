@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-对象解构</title>
+</head>
+<body>
+    
+</body>
+<script>
+/* const obj = {
+    uname:'lily',
+    age:18
+}
+const {uname,age} = obj
+// 要求 属性名和变量名必须一致
+console.log(uname,age) */
+
+// 1.对象解构的变量名 可以重新改名 方法：旧变量名 : 新变量名
+const obj = {
+    uname:'lily',
+    age:18
+}
+const uname = 'red'
+const {uname : username,age} = obj
+
+console.log(username,age)
+
+// 2.解构数组对象
+/* const pig = [
+    {
+        uname:'peiqi',
+        age:6
+    }
+]
+const [{uname,age}] = pig
+
+console.log(uname,age) */
+
+// 3.多级对象解构
+/* const pig = {
+    name:'peiqi',
+    family:{
+        mother:'mama',
+        father:'baba',
+        sister:'george'
+    },
+    age:6
+}
+
+const {name,family:{mother,father,sister},age} = pig
+// const {name,family,age} = pig
+console.log(name,mother,father,sister,age) */
+
+/* const people = [
+    {
+        name:'peiqi',
+        family:{
+            mother:'mama',
+            father:'baba',
+            sister:'george'
+        },
+        age:6
+    }
+]
+const [{name,family:{mother,father,sister},age}] = people
+
+console.log(name,mother,father,sister,age) */
+
+
+
+</script>
+</html>

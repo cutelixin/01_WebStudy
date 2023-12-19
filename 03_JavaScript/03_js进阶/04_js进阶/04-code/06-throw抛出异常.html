@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-throw抛出异常</title>
+</head>
+<body>
+</body>
+<script>
+    function fn(x,y){
+        if(!x || !y){
+            // throw '没有传递参数'
+            throw new Error('没有传递参数')
+        }
+        return x + y
+    }
+    console.log(fn(1,2))
+    fn()
+</script>
+</html>
