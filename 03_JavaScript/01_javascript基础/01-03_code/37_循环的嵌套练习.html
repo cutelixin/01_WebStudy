@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37_循环的嵌套练习</title>
+    <style>
+        span{
+            width: 60px;
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid black;
+            margin: 2px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* let row = +prompt("请输入行数：") 
+        let col = +prompt("请输入列数：") 
+
+        for(let i=0;i<row;i++){
+            document.write('<br>')
+            for(let j=0;j<col;j++){
+                document.write('⭐')
+            }
+        } */
+
+        // 打印倒三角星星
+        /* for(let i=0;i<5;i++){
+            document.write('<br>')
+            for(let j=0;j<=i;j++){
+                document.write('⭐')
+            }
+        } */
+
+        // 九九乘法表
+        for(let i=1 ;i<=9; i++){
+            document.write('<br>')
+            for(let j=1 ;j<=i; j++){
+                document.write(`<span>${j}X${i}=${i*j}</span>`)
+            }
+        }
+    </script>
+</body>
+</html>

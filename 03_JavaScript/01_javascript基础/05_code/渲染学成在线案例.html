@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渲染学成在线案例</title>
+    <link rel="stylesheet" href="./综合作业素材/css/style.css">
+    <script src="./综合作业素材/data/data.js"></script>
+</head>
+<body>
+    <!-- 4. box核心内容区域开始 -->
+    <div class="box w">
+        <div class="box-hd">
+            <h3>精品推荐</h3>
+            <a href="#">查看全部</a>
+        </div>
+        <div class="box-bd">
+            <ul class="clearfix">
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="./综合作业素材/images/course01.png" alt="">
+                        <h4>
+                            Think PHP 5.0 博客系统实战项目演练
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>1125</span>人在学习
+                        </div>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    <script>
+        let workData = data;
+        let html = ``
+        for(let i = 0;i < workData.length;i++){
+            html += `
+                <li>
+                    <a href="#">
+                        <img src=${workData[i].src} alt="${workData[i].title}">
+                        <h4>
+                            ${workData[i].title}
+                        </h4>
+                        <div class="info">
+                            <span>高级</span> • <span>${workData[i].num}</span>人在学习
+                        </div>
+                    </a>
+                </li>`
+        }
+
+        console.log(document.getElementsByClassName('clearfix')[0])
+        document.getElementsByClassName('clearfix')[0].innerHTML = html
+    </script>
+</body>
+</html>

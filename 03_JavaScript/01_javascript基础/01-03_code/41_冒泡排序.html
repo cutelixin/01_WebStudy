@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>41_冒泡排序</title>
+</head>
+<body>
+    <script>
+        let arr = [5,3,8,6,1,6,9]
+
+        /* for(let i=0 ; i<arr.length-1 ; i++){
+            for(let j = i+1 ; j<=arr.length-1 ; j++){
+                if(arr[i] > arr[j]){
+                    let mid = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = mid
+                }
+            }
+        } */
+
+        /* for(let i=0 ; i<arr.length-1 ; i++){
+            for(let j = 0 ; j<=arr.length-i-1 ; j++){
+                if(arr[j] > arr[j+1]){
+                    let mid = arr[j+1];
+                    arr[j+1] = arr[j];
+                    arr[j] = mid
+                }
+            }
+        } */
+
+        // 升序
+        arr.sort()
+
+        arr.sort((a,b)=>{
+            return a-b
+        })
+        // 降序
+        arr.sort((a,b)=>{
+            return b-a
+        })
+        console.log('arr',arr)
+    </script>
+</body>
+</html>

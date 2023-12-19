@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_体验函数99乘法表</title>
+</head>
+<body>
+    <script>
+
+        // sayHi
+        function sayHi(){
+            console.log('hi')
+        }
+        sayHi()
+
+        // 计算两个数的和
+        function add(a=0,b=0){
+            return a+b;
+        }
+
+        // 计算1-100的和
+        // function sum(){
+        //     let sum = 0
+        //     for(let i=1;i<=100;i++){
+        //         sum += i;
+        //     }
+        //     return sum;
+        // }
+
+        function sum(statr,end){
+            let sum = 0;
+            for(let i=statr;i<end;i++){
+                sum +=i
+            }
+            return sum
+        }
+
+        console.log('add',add())
+        console.log('sum',sum(1,20))
+
+
+    </script>
+</body>
+</html>

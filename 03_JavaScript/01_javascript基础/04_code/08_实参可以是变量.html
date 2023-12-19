@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_实参可以是变量</title>
+</head>
+<body>
+    <script>
+        function getNum(n=0,m=0){
+            let sum = 0;
+            for(let i = n ; i < m ; i++){
+                sum += i;
+            }
+            return sum;
+        }
+
+        let n = +prompt('请输入起始数据')
+        let m = +prompt('请输入结束数据')
+        alert(getNum(n,m))
+    </script>
+</body>
+</html>

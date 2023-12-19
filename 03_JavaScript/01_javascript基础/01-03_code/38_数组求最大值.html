@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>38_数组求最大值</title>
+</head>
+<body>
+    <script>
+        let arr = [2,6,1,77,52,25,7];
+        
+        // 方法一：数组遍历
+        /* let MaxNum = arr[0];
+        let MinNum = arr[0];
+
+        for(let i = 0; i < arr.length ;i++){
+            MaxNum = MaxNum > arr[i] ? MaxNum : arr[i]
+            MinNum = MinNum < arr[i] ? MinNum : arr[i]
+        } */
+
+        // 方法二：数组的reduce方法
+        /* let MaxNum = arr.reduce((pre,cur)=>{
+            return pre > cur ? pre : cur
+        }) */
+
+        // let MinNum = arr.reduce((pre,cur)=> pre < cur ? pre : cur)
+
+        // 方法三：Math.max 结合 apply()
+        let MaxNum = Math.max.apply(null,arr)
+        let MinNum = Math.min.apply(null,arr)
+
+        console.log('MaxNum',MaxNum)
+        console.log('MinNum',MinNum)
+
+
+    </script>
+</body>
+</html>

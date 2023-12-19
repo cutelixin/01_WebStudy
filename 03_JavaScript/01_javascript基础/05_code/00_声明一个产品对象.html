@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声明一个产品对象</title>
+</head>
+<body>
+    <script>
+        // 声明对象
+        let goods = {
+            name:"魔法梳子",
+            num:'001',
+            weight:'50g',
+            address:'japan'
+        }
+
+        // 使用
+        console.log(goods.name)
+
+        goods.name = 'magic'
+
+        goods.price = 20
+
+        delete goods.num
+
+        // 遍历对象 
+        for(let key in goods){
+            console.log(key+':'+goods[key])
+        }
+    </script>
+</body>
+</html>

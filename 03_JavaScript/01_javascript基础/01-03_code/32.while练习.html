@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32.while练习</title>
+</head>
+<body>
+    <script>
+        let i = 1;
+        let sum = 0;
+
+        // 输出1-100
+        /* while(i <= 100){
+            document.write('输出的数字为：'+ i +'<br>')
+        } */
+
+        // 计算1-100的总和
+        /* while(i <= 100){
+            sum += i;
+            i++;
+            console.log('sum',sum,i)
+        } */
+
+        // 计算1-100之间所有的偶数和
+        while(i <= 100){
+            // sum = sum + i
+            // i+=2;
+            sum = (i%2==0)? sum + i : sum;
+            i++;
+        }
+
+        console.log('sum',sum)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 练习2
+        /* function sum(a,b){
+            return a+b
+        }
+
+        let num = sum(1,2)
+        console.log(num) */
+
+        // 练习题3：
+        /* function changeNum(a,b){
+            let mid = a;
+            a = b;
+            b = mid;
+            return [a,b]
+        }
+
+        console.log(changeNum(1,2)) */
+
+        // 练习4：
+        // function change(){
+        //     let BankBalance = prompt('请输入银行卡余额');
+        //     let monthBalance = prompt('请输入月当月食宿消费金额');
+        //     let monthLiveBalance = prompt('请输入当月生活消费金额')
+
+        //     document.write(`银行卡剩余金额为${BankBalance-monthBalance-monthLiveBalance}`)
+        // }
+
+        // change()
+
+
+        // 练习5 
+        /* function handleData(arr = [],bool){
+            if(bool || (bool === undefined)){
+                return eval(arr.join("+"));
+            }else{
+                return eval(arr.join("+"))/(arr.length);
+            }
+        }
+
+        // 求和且不传递参数
+        // let sum = handleData([1,2,3,4])
+        // 求和且传参为true
+        // let sum = handleData([1,2,3,4],true)
+        // 求平均数
+        // let sum = handleData([1,2,3,4],false)
+
+        console.log(sum) */
+
+        // 拓展题1
+        /* function some(ele,arr = []){
+            return arr.indexOf(ele) > 0
+        }
+
+        console.log(some('香蕉',['苹果', '香蕉', '橘子', '荔枝', '梨子'])) */
+
+        // 拓展题2
+        /* function findeIndex(ele,arr = []){
+            for(let i = 0; i < arr.length; i++){
+                if(ele === arr[i]){
+                    return i;
+                }
+            }
+        }
+
+        console.log(findeIndex('橘子',['苹果', '香蕉', '橘子', '荔枝', '梨子'])) */
+
+        // 排错题1
+        // 请返回一个数字型的结果 可以使用默认参数或者逻辑中断都可以
+        /* function fn(x=0, y=0) {
+            console.log(x + y)
+        }
+        fn(1) */
+
+        // 排错题2
+        // 任意数组求和案例
+        /* function getsumArr(arr) {
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum = sum + arr[i]
+            }
+            return sum
+        }
+        console.log(getsumArr([10, 20, 30, 40])) */
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_求任意两个数的最大值</title>
+</head>
+<body>
+    <script>
+        // 求任意两个数的最大值
+        /* function getMax(a,b){
+            return a > b ? a : b; 
+        }
+
+        let a = prompt('请输入第一位数')
+        let b = prompt('请输入第二位数')
+        alert(`最大值为${getMax(a,b)}`) */
+
+        // 求任意数组的最大值 和 最小值 
+        function getArrMax(arr){
+            let max,min = arr[0]
+            for(let i=0;i<arr.length;i++){
+                max = max > arr[i] ? max : arr[i]
+                min = min < arr[i] ? min : arr[i]
+            }
+            return {max,min}
+        }
+        
+        let obj = getArrMax([1,4,5,0])
+
+
+        alert(`数组最大值为${obj.max}`)
+        alert(`数组最小值为${obj.min}`)
+    </script>
+</body>
+</html>

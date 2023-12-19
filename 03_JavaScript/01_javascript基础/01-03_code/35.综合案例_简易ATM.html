@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易ATM</title>
+</head>
+<body>
+    <script>
+
+        let money = 100
+
+        while(1){
+            let num = +prompt(`
+            请输入选择数字:
+            1.存钱
+            2.取钱
+            3.查看余额
+            4.退出
+            `)
+ 
+            if(num === 4){
+                break
+            }
+            
+            switch(num){
+                case 1:
+                    saveNum = +prompt('请输入存储数目：');
+                    money += saveNum
+                    break;
+                case 2:
+                    let takeNum = +prompt('请输入取出数目：');
+                    if(money <= 0 || money < takeNum){
+                        alert('余额不足');
+                    }else{
+                        money -= takeNum;
+                    }
+                    break;
+                case 3:
+                    alert(`余额为：${money}`);
+                default:
+                    break; 
+            }
+        }
+    </script>
+</body>
+</html>
