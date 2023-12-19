@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>显示格式化后的时间</h1>
+        <!-- 利用computed实现 -->
+        <h3>现在是：{{fmtTime}}</h3>
+        <!-- 利用methods实现 -->
+        <h3>现在是：{{getFmtTime()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>现在是：{{time | timeFormater}}</h3>
+        <!-- 过滤器实现 (传参) -->
+        <h3>现在是：{{time | timeFormater('YYYY-MM-DD')}}</h3>
+        <!-- 过滤器实现 (串联) -->
+        <h3>现在是：{{time | timeFormater('YYYY-MM-DD') | mySlice}}</h3>
+        <h3 :x="msg | mySlice">{{msg}}</h3>
+    </div>
+
+    <div id="root2">
+        <h1>{{msg | mySlice}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        // 全局过滤器
+        Vue.filter('mySlice',function(val){
+            return val.slice(0,4)
+        })
+
+        // 创建vue实例
+        new Vue ({
+            el:'#root',
+            data(){ 
+                return{
+                    time:Date.now(),
+                    msg:'hello,liar'
+                }
+            },
+            computed:{
+                fmtTime(){
+                    return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+                }
+            },
+            methods: {
+                getFmtTime(){
+                    return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+                }
+            },
+            // 局部过滤器
+            filters:{
+                /* timeFormater(val){
+                    return dayjs(val).format('YYYY年MM月DD日 HH:mm:ss')
+                } */
+                // es6传参方法
+                timeFormater(val,str='YYYY年MM月DD日 HH:mm:ss'){
+                    return dayjs(val).format(str)
+                }
+            }
+        })
+
+        new Vue ({
+            el:'#root2',
+            data(){ 
+                return{
+                    msg:'hello,atsgg'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

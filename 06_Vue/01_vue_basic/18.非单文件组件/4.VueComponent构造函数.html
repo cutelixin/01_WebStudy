@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.VueComponent构造函数</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <school></school>
+        <hello></hello>
+    </div>
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        // 创建school组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h1>学校名称：{{schoolName}}</h1>
+                    <h1>学校地址：{{address}}</h1>
+                </div>
+            `,
+            data(){ 
+                return{
+                    schoolName:'尚硅谷',
+                    address:'北京',
+                }
+            },
+        });
+
+
+        const test = Vue.extend({
+            template:`<span>123</span>`
+        })
+
+        const hello = Vue.extend({
+            template:`
+            <div>
+                <test></test>
+                <h1>{{msg}}</h1>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:'你好，欢迎管理'
+                }
+            },
+            components:{
+                test
+            }
+        })
+
+
+        // 创建vue实例
+        const vm = new Vue ({
+            el:'#root',
+            data(){
+                return{
+                    msg:'你好啊'
+                }
+            },
+            components:{
+                school:school,
+                hello:hello
+            }
+        })
+
+      
+    </script>
+</body>
+</html>

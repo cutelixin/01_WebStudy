@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.事件的修饰符</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1{
+            height: 50px;
+            background: skyblue;
+        }
+        .box1{
+            padding: 5px;
+            background: skyblue;
+        }
+        .box2{
+            padding: 5px;
+            background: orange;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            overflow: auto;
+            background-color: orange;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+
+        <h1>欢迎来到{{name}}学习</h1>
+
+        <!-- 阻止默认事件(常用) -->
+        <a href="http://www.atguigu.com/" @click.prevent="showInfo">点我提示信息</a>
+
+        <!-- 阻止事件冒泡(常用) -->
+        <div class="demo1" @click="showInfo">
+            <button @click.stop="showInfo">点我提示信息</button>
+            <!-- 修饰符可以连续写 -->
+            <a href="http://www.atguigu.com/" @click.prevent.stop="showInfo">点我提示信息</a>
+        </div>
+
+        <!-- 事件只触发一次(常用) -->
+        <button @click.once="showInfo">点我提示信息</button>
+
+        <!-- 使用事件的捕获模式 -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <!-- 只有event.target是当前操作的元素时才触发事件 -->
+        <div class="demo1" @click.self="showInfo">
+            <button @click="showInfo">点我提示信息</button>
+        </div>
+
+        <!-- 事件的默认行为立即执行，无需等待事件回调执行完成 -->
+        <ul @wheel.passive="demo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:'尚硅谷'
+                }
+            },
+            methods:{
+                showInfo(){
+                    alert('同学你好')
+                },
+                showMsg(num){
+                    console.log('num',num)
+                },
+                demo(){
+                    for (let index = 0; index < 11111; index++) {
+                        console.log('#')
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

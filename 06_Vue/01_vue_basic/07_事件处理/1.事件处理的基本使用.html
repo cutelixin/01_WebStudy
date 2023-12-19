@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.事件处理的基本使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+
+        <h1>欢迎来到{{name}}学习</h1>
+        <button v-on:click="showInfo1">点我提示信息1(不传参)</button>
+        <button @click="showInfo2($event,66)">点我提示信息2(传参)</button>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:'尚硅谷'
+                }
+            },
+            methods:{
+                showInfo1(event){
+                    // console.log(event)
+                    // console.log(this);  // 此处的this为vm
+                    alert('点我提示信息1')
+                },
+                showInfo2(e,data){
+                    // console.log(event)
+                    // console.log(this);  // 此处的this为vm
+                    console.log(e,data)
+                    alert('点我提示信息2,' + '接收的参数为：' + data);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

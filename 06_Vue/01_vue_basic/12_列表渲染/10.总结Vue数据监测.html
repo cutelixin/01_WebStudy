@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.总结Vue数据监测</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>学生信息</h1>
+
+        <button @click="student.age++">年龄+1</button><br>
+        <button @click="addSex">添加性别属性，默认值：男</button><br>
+        <button @click="student.sex = '未知' ">修改性别</button><br>
+        <button @click="addFriend">在列表首位添加一个朋友</button><br>
+        <button @click="changeFriendName">修改第一个朋友的名字：张三</button><br>
+        <button @click="addHobby">添加一个爱好</button><br>
+        <button @click="changeFirstHobby">修改第一个爱好为开车</button><br>
+
+
+        <h1>姓名：{{student.name}}</h1>
+        <h1>年龄：{{student.age}}</h1>
+        <h1 v-if="student.sex">性别：{{student.sex}}</h1>
+        <h2>爱好</h2>
+        <ul>
+            <li v-for="(item,index) in student.hobby" ::key="index">
+                {{item}}
+            </li>
+        </ul>
+        <h2>朋友们</h2>
+        <ul>
+            <li v-for="(item,index) in student.friends" ::key="index">
+                {{item.name}}--{{item.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        // 用computed实现
+        const vm = new Vue({
+            el:'#root',
+            data(){ 
+                return{
+                    student:{
+                        name:'jerry',
+                        age:18,
+                        hobby:['抽烟','喝酒','打豆豆'],
+                        friends:[
+                            {name:'jerry',age:35},
+                            {name:'tony',age:34},
+                        ]
+                    },
+                }
+            },
+            methods: {
+                addSex(){
+                    Vue.set(this.student,'sex','男')
+                    // this.$set(this.student,'sex','男')
+                },
+                addFriend(){
+                    this.student.friends.unshift({name:'lily',age:19})
+                },
+                changeFriendName(){
+                    this.student.friends[0].name = '张三'
+
+                    // 数组里对象具有getter和setter
+                },
+                addHobby(){
+                    this.student.hobby.push('喝酒')
+                },
+                changeFirstHobby(){
+                    // this.student.hobby.splice(0,1,'开车')
+                    Vue.set(this.student.hobby,0,'开车')
+                    this.$set(this.student.hobby,0,'开车')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.姓名案例_computed简写</title>
+    <script src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" placeholder="输入姓" v-model="lastName"> <br>
+        名：<input type="text" placeholder="输入名" v-model="firstName"> <br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    lastName:'张',
+                    firstName:'三',
+                }
+            },
+            computed:{
+                // 简写(只考虑读取，不考虑修改)
+                fullName(){
+                    console.log(this)
+                    return this.lastName + '-' + this. firstName
+                }
+                // 完整写法
+                /* fullName:{
+                    get(){
+                        console.log('get被调用了')
+                        return this.lastName + '-' + this. firstName
+                    },
+                    set(value){
+                        console.log('set',value)
+                        const str = this.fullName.split('-');
+
+                        this.lastName = str[0]
+                        this.firstName = str[1]
+                    }
+                } */
+            },
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.姓名案例_watch实现</title>
+    <script src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" placeholder="输入姓" v-model="name.lastName"> <br>
+        名：<input type="text" placeholder="输入名" v-model="name.firstName"> <br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:{
+                        lastName:'张',
+                        firstName:'三',
+                    },
+                    fullName:'张-三'
+                }
+            },
+            watch:{
+                name:{
+                    immediate:true,
+                    deep:true,
+                    handler(newVal,oldVal){
+                        console.log(newVal,oldVal)
+                        setTimeout(() => {
+                            this.fullName = newVal.lastName + '-' + newVal.firstName
+                        }, 1000);
+                    }
+                }
+                
+            },
+        })
+
+    </script>
+</body>
+</html>

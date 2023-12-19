@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.基本使用</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <hello></hello>
+        <hr>
+        <h1>{{msg}}</h1>
+        <hr>
+        <school></school>
+        <hr>
+        <student></student>
+    </div>
+
+    <div id="root2">
+        <hello></hello>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        // 创建school组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h1>学校名称：{{schoolName}}</h1>
+                    <h1>学校地址：{{address}}</h1>
+                    <button @click="showName">点我提示学校名</button>
+                </div>
+            `,
+            data(){ 
+                return{
+                    schoolName:'尚硅谷',
+                    address:'北京',
+                }
+            },
+            methods: {
+                showName(){alert(this.schoolName)}
+            },
+        })
+
+        // 创建student组件
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h1>学生名称：{{studentName}}</h1>
+                    <h1>学生地址：{{age}}</h1>
+                </div>
+            `,
+            data(){ 
+                return{
+                    studentName:'jerry',
+                    age:18
+                }
+            },
+        })
+
+        const hello = Vue.extend({
+            template:`
+                <h1>你好啊！{{name}}</h1>
+            `,
+            data(){
+                return{
+                    name:'tom'
+                }
+            }
+        })
+
+        // 定义全局组件
+        Vue.component('hello',hello)
+
+        // 创建vue实例
+        new Vue ({
+            el:'#root',
+            data(){
+                return{
+                    msg:'你好啊'
+                }
+            },
+            components:{
+                school,
+                student
+            }
+        })
+
+        new Vue({
+            el:'#root2',
+            data(){
+                return{}
+            }
+        })
+    </script>
+</body>
+</html>

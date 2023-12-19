@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.更新时的一个问题</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>人员列表</h2>
+        <button @click="changeMei">更新马冬梅信息</button>
+        <ul>
+            <li v-for="(item,index) in persons" 
+                :key="item.id">
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+            
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+        // 用computed实现
+        new Vue({
+            el:'#root',
+            data(){ 
+                return{
+                    persons:[
+                        {id:'001',name:'马冬梅',age:100,sex:'女'},
+                        {id:'002',name:'周冬雨',age:19,sex:'女'},
+                        {id:'003',name:'周杰伦',age:18,sex:'男'},
+                        {id:'004',name:'温兆伦',age:21,sex:'男'},
+                    ],
+                }
+            },
+            methods: {
+                changeMei(){
+
+                    this.persons[0].name = '马老师' //奏效
+                    this.persons[0].age = 50        //奏效
+                    this.persons[0].sex = '男'      //奏效
+
+                    // this.persons[0] = {id:'001',name:'马老师',age:50,sex:'男'} // 不奏效
+
+                    // 利用数组自带的方法才能够渲染到页面
+                    this.persons.splice(0,1,{id:'001',name:'马老师',age:50,sex:'男'})
+                }
+            },
+        })
+    </script>
+</body>
+</html>

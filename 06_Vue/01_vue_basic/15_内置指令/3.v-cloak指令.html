@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.v-cloak指令</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1 v-clock>{{name}}</h1>
+      </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false // 阻止vue在启动时生成的生产提示
+
+    // 创建vue实例
+    new Vue ({
+        el:'#root',
+        data(){ 
+            return{
+                name:'尚硅谷'
+            }
+        },
+    })
+</script>
+
+</html>
