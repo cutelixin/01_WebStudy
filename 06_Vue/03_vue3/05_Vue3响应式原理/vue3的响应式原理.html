@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue3的响应式原理</title>
+</head>
+<body>
+    <script>
+        let person = {
+            name:'张三',
+            age:19
+        }
+
+        // 模拟vue2实现响应式
+        /* let p = {}
+        Object.defineProperty(p,'name',{
+            configurable:true,
+            get(){
+                return person.name
+                console.log('有人读取了数据name')
+            },
+            set(value){
+                person.name = value
+                console.log('有人修改了数据name')
+            }
+        })
+        Object.defineProperty(p,'age',{
+            configurable:true,
+            get(){
+                return person.age
+                console.log('有人读取了数据age')
+            },
+            set(value){
+                person.age = value
+                console.log('有人修改了数据age')
+            }
+        }) */
+
+        // 模拟vue3实现响应式
+        const p = new Proxy(person,{
+            // 有人读取了数据
+            get(target,propName){
+                console.log(`有人读取了p身上${propName}`,target,propName)
+                return Reflect.get(target,propName)
+            },
+            // 有人更新 or 添加 了数据
+            set(target,propName,value){
+                console.log(`有人更新了p身上的${propName}为${value}`,target,propName,value)
+                Reflect.set(target,propName,value)
+            },
+            // 有人删除了数据
+            deleteProperty(target,propName){
+                console.log(`有人删除了p身上的${propName}`,target,propName)
+                return Reflect.deleteProperty(target,propName )
+            }
+        })
+
+    </script>
+</body>
+</html>
