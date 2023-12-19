@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-map方法和join方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = ['red','blue','yellow']
+
+    // map方法 处理数据并返回数组
+    let newArr = arr.map((ele,index)=>{
+        return ele + '颜色'
+    })
+
+    console.log('newArr',newArr)
+    
+    // join方法 把数组拼接字符串
+    let str1 = newArr.join()         // 小括号为空则逗号分割
+    let str2 = newArr.join('')         // 小括号为''则元素之间没有分隔符
+    let str3 = newArr.join('-')         // 小括号为'-'则元素之间用 - 分隔符
+
+    console.log('str',str1)
+</script>
+</html>

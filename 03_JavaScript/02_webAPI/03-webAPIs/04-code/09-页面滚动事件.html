@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-页面滚动事件</title>
+    <style>
+        body{
+            height: 3000px;
+            padding-top: 500px;
+        }
+        div{
+            display: none;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: auto;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+        who are you?
+    </div>
+</body>
+<script>
+    const div = document.querySelector('div')
+    document.documentElement.scrollTop = 800
+    // 页面滚动
+    window.addEventListener('scroll',function(){
+        // console.log('scroll')
+        // 页面滚动多少像素 scrollTop
+        // 获取html的写法 document.documentElement
+        // console.log(document.documentElement.scrollTop)
+        // n 为数字型  不带单位 可读写
+        const n = document.documentElement.scrollTop
+        if(n>=100){
+            div.style.display = 'block'
+        }else{
+            div.style.display = 'none'
+        }
+    })
+
+    /* const div = document.querySelector('div')
+    div.addEventListener('scroll',function(){
+        // console.log(this.scrollTop)
+    }) */
+</script>
+</html>

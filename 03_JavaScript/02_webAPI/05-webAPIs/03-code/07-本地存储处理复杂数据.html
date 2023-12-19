@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-本地存储处理复杂数据</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const data = {
+        name:'lily',
+        age:89,
+        gender:'man'
+    }
+    // 复杂数据类型存储必须转为JSON字符  JSON.stringify(data)
+    localStorage.setItem('info',JSON.stringify(data))
+    const getData = localStorage.getItem('info')
+    // JSON对象 属性和值都有引号 而且引号统一为双引号
+    // {"name":"lily","age":89,"gender":"man"}
+    // 将JSON对象字符转为对象 JSON.parse(getData)
+    console.log('getData',JSON.parse(getData))
+</script>
+</html>

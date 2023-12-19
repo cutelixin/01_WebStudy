@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <title>01-日期对象的使用</title>
+    <style>
+        div{
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    /* // 得到当前时间
+    const date = new Date()
+    console.log('date',date)
+    // 指定时间
+    const date1 = new Date('2024-5-1 08:30:00')
+    console.log('date1',date1) */
+
+    // 常见的日期对象方法
+    /* const date = new Date('2008-08-08 08:08:08')
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const ddate = date.getDate()
+    const day = date.getDay()
+    const hour = date.getHours()
+    const mintue = date.getMinutes()
+    const seconds = date.getSeconds()
+
+    console.log(year + '-' + month + '-' + ddate + ' ' + 0 + hour + ':' +0 + mintue + ':' + 0 + seconds)
+
+    console.log('year',year)
+    console.log('month',month)
+    console.log('Date',ddate)
+    console.log('day',day)
+    console.log('mintue',mintue)
+    console.log('seconds',seconds) */
+
+    // 日期的另外一个写法
+    const div = document.querySelector('div')
+    const date = new Date()
+    div.innerHTML = date.toLocaleString()
+    div.innerHTML = date.toLocaleDateString()
+    div.innerHTML = date.toLocaleTimeString()
+
+    setInterval(() => {
+        const date = new Date()
+        div.innerHTML = date.toLocaleString()
+    }, 1000);
+</script>
+</html>

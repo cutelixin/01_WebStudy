@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-正则表达式的使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const str = '我们在学习前端'
+    const reg = /前端/
+    // 检查是否匹配
+    const bool = reg.test(str)   // 返回true 或者 false
+    const bool2 = reg.exec(str)  // 返回数组
+    console.log(bool2)
+</script>
+</html>

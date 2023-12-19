@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_获取表单数据的值</title>
+</head>
+
+<body>
+
+    <!-- <input type="text" value="电脑"> -->
+
+    <input type="checkbox">
+    <button>点击</button>
+
+    <script>
+        // 获取元素
+        /* const uname = document.querySelector('input')
+
+        // 元素属性赋值
+        uname.type = 'password'
+        uname.value = '电脑电脑'
+
+        // 获取元素属性的值
+        console.log('val',uname.value)
+        console.log('type',uname.type) */
+
+        const ipt = document.querySelector('input')
+        ipt.checked = true
+
+        const btn = document.querySelector('button')
+        btn.disabled = true
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-延迟函数</title>
+    <style>
+        img{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/ad.png" alt="">
+</body>
+    <script>
+        // 延迟函数
+        /* let timer = setTimeout(() => {
+            console.log('1')
+        }, 2000);
+        clearTimeout(timer) */
+
+        const img = document.querySelector('img')
+
+        setTimeout(() => {
+            img.style.display = 'none'
+        }, 3000);
+        
+    </script>
+</html>

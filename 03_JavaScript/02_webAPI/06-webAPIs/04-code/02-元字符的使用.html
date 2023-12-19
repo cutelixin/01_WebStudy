@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-元字符的使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* console.log(/ha/.test('ha'))        //true
+    console.log(/ha/.test('haha'))      //true
+    console.log(/ha/.test('erha'))      //true */
+
+    // 边界符 ^以什么开头 $以什么结尾  
+    /* console.log(/^哈/.test('哈'))       //true
+    console.log(/^哈/.test('哈哈'))     //true
+    console.log(/^哈/.test('二哈'))     //false */
+
+    // /^$/ 两种一起则为精确匹配
+    /* console.log(/^哈$/.test('哈'))      //true  只有这种情况为true，其余都是false
+    console.log(/^哈$/.test('哈哈'))    //false
+    console.log(/^哈$/.test('二哈'))    //false */
+
+    // 量词
+    // * 代表零次或多次 >=0
+    /* console.log(/^哈*$/.test('哈哈'))   //true
+    console.log(/^哈*$/.test('哈'))     //true
+    console.log(/^哈*$/.test(''))     //true
+    console.log(/^哈*$/.test('二哈'))   //false
+    console.log(/^哈*$/.test('哈二'))   //false
+    console.log(/^哈*$/.test('哈很哈'))   //false */
+
+    // + 代表一次或多次 >=1
+    /* console.log(/^哈+$/.test('哈哈'))   //true
+    console.log(/^哈+$/.test('哈'))     //true
+    console.log(/^哈+$/.test(''))     //false
+    console.log(/^哈+$/.test('二哈'))   //false
+    console.log(/^哈+$/.test('哈二'))   //false
+    console.log(/^哈+$/.test('哈很哈'))   //false */
+
+    // ? 代表零次或者一次
+    /* console.log(/^哈?$/.test('哈哈'))   //false
+    console.log(/^哈?$/.test('哈'))     //true
+    console.log(/^哈?$/.test(''))     //true
+    console.log(/^哈?$/.test('二哈'))   //false
+    console.log(/^哈?$/.test('哈二'))   //false
+    console.log(/^哈?$/.test('哈很哈'))   //false */
+
+    // {n} 重复n次
+    /* console.log(/^哈{2}$/.test('哈哈'))   //true
+    console.log(/^哈{2}$/.test('哈'))     //false
+    console.log(/^哈{2}$/.test(''))     //false
+    console.log(/^哈{2}$/.test('二哈'))   //false
+    console.log(/^哈{2}$/.test('哈二'))   //false
+    console.log(/^哈{2}$/.test('哈很哈'))   //false */
+
+    // {n,} 重复>=n次
+    /* console.log(/^哈{2,}$/.test('哈哈'))   //true
+    console.log(/^哈{2,}$/.test('哈哈哈'))     //true
+    console.log(/^哈{2,}$/.test(''))     //false
+    console.log(/^哈{2,}$/.test('二哈'))   //false
+    console.log(/^哈{2,}$/.test('哈二'))   //false
+    console.log(/^哈{2,}$/.test('哈很哈'))   //false */
+
+    // {n,m} 逗号左右千万不能有空格 重复>=n次 && <=m
+    /* console.log(/^哈{2,4}$/.test('哈'))   //false
+    console.log(/^哈{2,4}$/.test('哈哈'))     //true
+    console.log(/^哈{2,4}$/.test('哈哈哈'))     //true
+    console.log(/^哈{2,4}$/.test('哈哈哈哈'))   //true
+    console.log(/^哈{2,4}$/.test('哈哈哈哈哈'))   //false
+    console.log(/^哈{2,4}$/.test('哈很哈哈哈哈'))   //false */
+
+    // 字符类（重点）
+    // [] 匹配字符合集 [abc]只需匹配一个字母则为true
+    /* console.log(/^[abc]$/.test('a'))    // true
+    console.log(/^[abc]$/.test('b'))    // true
+    console.log(/^[abc]$/.test('c'))    // true
+    console.log(/^[abc]$/.test('ab'))   // false  精确匹配只有一个
+    console.log(/^[abc]{2}$/.test('abc'))  // true  量词为2 */
+
+    // [a-z] 26个英文字母都包含
+    /* console.log(/^[a-z]$/.test('p'))          // true
+    console.log(/^[A-Z]$/.test('p'))          // false
+    console.log(/^[A-Z]$/.test('P'))          // true
+    console.log(/^[0-9]$/.test(2))            // true
+    console.log(/^[a-zA-Z0-9]$/.test('p'))    // true
+    console.log(/^[a-zA-Z0-9]$/.test('9'))    // true
+    console.log(/^[a-zA-Z0-9]$/.test('p'))    // true */
+
+    // [] 里面加上 ^ 取反符号 例[^a-z]匹配除了小写字母以外的字符
+    console.log(/^[^a-zA-Z0-9]$/.test(' '))
+
+    // . 匹配除了换行符以外的任何字符（了解）
+
+    // 预定义类
+    // 日期格式 /^\d{4}-\d{1,2}-\d{1,2}/
+    // \d 代表[0-9]
+    // \D 代表[^0-9]
+    // \w 代表[a-zA-Z0-9]
+    // \W 代表[^a-zA-Z0-9]
+    // \s 匹配所有空格，代表[\t\r\n\v\f]
+    // \S 匹配所有非空格，代表[^\t\r\n\v\f]
+    console.log(/^\d{4}-\d{1,2}-\d{1,2}$/.test('2022-12-20'))
+
+    
+
+</script>
+</html>

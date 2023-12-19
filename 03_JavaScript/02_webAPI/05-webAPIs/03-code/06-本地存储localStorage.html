@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-本地存储localStorage和sessionStorage</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 存储一个名字 localStorage.setItem('键',值)
+    localStorage.setItem('uname','pink老师')
+    // 获取本地存储 localStorage.getItem('键')
+    // 同一个域名可以获得本地存储
+    console.log(localStorage.getItem('uname'))
+    // 删除本地存储 只删除名字 localStorage.removeItem('键')
+    // localStorage.removeItem('uname')
+
+    // 本地存储只能存储字符串类型
+    localStorage.setItem('age',18)
+    console.log(localStorage.getItem('age'))
+    
+</script>
+</html>

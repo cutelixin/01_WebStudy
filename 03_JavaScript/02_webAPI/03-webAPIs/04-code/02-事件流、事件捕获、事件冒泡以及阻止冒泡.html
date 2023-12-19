@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-事件流、事件捕获、事件冒泡以及阻止冒泡</title>
+    <style>
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+</body>
+
+<script>
+    const father = document.querySelector('.father')
+    const son = document.querySelector('.son')
+
+    document.addEventListener('click',function(e){
+        alert('我是你爷')
+    })
+
+    father.addEventListener('click',function(e){
+        alert('我是你爹')
+
+    })
+
+    son.addEventListener('click',function(e){
+        // 阻止冒泡
+        e.stopPropagation()
+        alert('我')
+    })
+</script>
+</html>

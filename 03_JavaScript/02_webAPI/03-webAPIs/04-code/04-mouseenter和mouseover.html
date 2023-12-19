@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-mouseenter和mouseover</title>
+    <style>
+        .dad{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .baby{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">
+        <div class="baby"></div>
+    </div>
+</body>
+<script>
+    const dad = document.querySelector('.dad')
+    const baby = document.querySelector('.baby')
+
+    baby.addEventListener('mouseenter',function(){
+        console.log('鼠标经过')
+    })
+
+    baby.addEventListener('mouseleave',function(){
+        console.log('鼠标离开')
+    })
+</script>
+</html>

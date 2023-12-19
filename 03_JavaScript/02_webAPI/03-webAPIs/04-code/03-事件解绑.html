@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-事件解绑.html</title>
+</head>
+<body>
+    <button>click</button>
+
+    <script>
+        const btn = document.querySelector('button')
+        btn.addEventListener('click',fn)
+        btn.removeEventListener('click',fn)
+
+        function fn(){
+            alert('店家')
+        }
+    </script>
+</body>
+</html>

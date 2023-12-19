@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_修改元素常见的属性</title>
+</head>
+<body>
+    <img src="./images/1.webp" alt="img">
+    <script>
+        // 取值 N-M 的随机整数
+        function getRandom(N,M){
+            return Math.floor(Math.random() * M - N + 1) + N
+        }
+
+        const img = document.querySelector('img')
+        const random = getRandom(1,6)
+
+        console.log(random)
+        
+        img.src = `./images/${random}.webp`
+        img.title = '刘德华'
+    </script>
+</body>
+</html>

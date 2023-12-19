@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-页面尺寸事件</title>
+    <style>
+        div{
+            display: inline-block;
+            /* width: 200px; */
+            height: 200px;
+            background-color: pink;
+            padding: 100px;
+            border: 2px solid purple;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div>11111111111111111</div>
+</body>
+<script>
+    const div = document.querySelector('div')
+    console.log('clientWidth',div.clientWidth)
+    // 检测盒子的位置 最近一级带有定位的祖先元素
+    console.log('offsetLeft',div.offsetLeft)
+    // resize 浏览器窗口大小发生变化的时候触发的事件
+    window.addEventListener('resize',function(){
+    })
+</script>
+</html>

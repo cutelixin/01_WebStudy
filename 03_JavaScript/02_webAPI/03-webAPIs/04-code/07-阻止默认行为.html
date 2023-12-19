@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-阻止默认行为</title>
+</head>
+<body>
+    <form action="http://www.itcast.com">
+        <input type="submit" value="free">
+    </form>
+    <a href="http://www.baidu.com">baidu</a>
+</body>
+<script>
+    const form = document.querySelector('form')
+    form.addEventListener('submit',function(e){
+        e.preventDefault();     // 阻止默认行为
+    })
+
+    const a = document.querySelector('a')
+    a.addEventListener('click',function(e){
+        e.preventDefault()      // 阻止默认行为
+    })
+</script>
+</html>

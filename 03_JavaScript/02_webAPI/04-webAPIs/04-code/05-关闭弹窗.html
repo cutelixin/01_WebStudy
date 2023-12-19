@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-关闭弹窗</title>
+    <style>
+        .ad{
+            margin: 10px auto 0;
+            padding: 5px;
+            width: 800px;
+            height: 200px;
+            background-color: rgb(0, 179, 255);
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .close{
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 20px;
+            float: right;
+            padding: 2px;
+            width: 11px;
+            height: 20px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad">
+        advertisement
+        <div class="close">X</div>
+    </div>
+    <div class="ad">
+        advertisement
+        <div class="close">X</div>
+    </div>
+    <div class="ad">
+        advertisement
+        <div class="close">X</div>
+    </div>
+</body>
+<script>
+    const clos = document.querySelectorAll('.close')
+
+    clos.forEach(clo=>{
+        clo.addEventListener('click',function(){
+            this.parentNode.style.display = 'none'
+        })
+    })
+</script>
+</html>

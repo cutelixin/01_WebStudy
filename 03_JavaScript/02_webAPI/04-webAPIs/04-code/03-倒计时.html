@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-倒计时.html</title>
+    <style>
+        .frame{
+            width: 300px;
+            height: 460px;
+            background-color: rgb(176, 1, 1);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .footer{
+            margin-top: 200px;
+        }
+        ul{
+            margin-left: -40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li{
+            display: inline-block;
+            width: 50px;
+            height: 55px;
+            font-size: 35px;
+        }
+        li:nth-child(odd){
+            background-color: black;
+        }
+        .footer{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <p class="today">今天是2222年2月22日</p>
+        <h1>下班倒计时</h1>
+        <ul>
+            <li class="hours">00</li>
+            <li>:</li>
+            <li class="min">25</li>
+            <li>:</li>
+            <li class="sec">20</li>
+        </ul>
+        <p class="footer">18:30:00下课</p>
+    </div>
+</body>
+<script>
+    function getRandomColor(flag = true){
+        if(flag){
+            let str = "#";
+            let arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+            for(let i=0;i<6;i++){
+                let random = Math.floor(Math.random() * arr.length)
+                str += arr[random]
+            }
+            return str
+        }else{
+            let r = Math.floor(Math.random() * 256)
+            let g = Math.floor(Math.random() * 256)
+            let b = Math.floor(Math.random() * 256)
+
+            return `rab(${r},${g},${b})`
+        }
+    }
+    function getCountTime(){
+        const getToday = new Date()
+        const now = +new Date()
+        const last = +new Date('2023-8-19 18:30:00')
+        const count = (last - now) / 1000
+        let h = parseInt(count / 60 / 60 % 24)
+        h = h<10 ? '0'+h : h
+        let m = parseInt(count / 60 % 60 ) 
+        m = m<10 ? '0'+m : m
+        let s = parseInt(count % 60 ) 
+        s = s<10 ? '0'+s : s
+        
+        document.querySelector('.today').innerHTML = `今天是${getToday.getFullYear()}年${getToday.getMonth()+1}月${getToday.getDate()}日`
+        document.querySelector('.hours').innerHTML = h
+        document.querySelector('.min').innerHTML = m
+        document.querySelector('.sec').innerHTML = s
+        document.querySelector('.frame').style.backgroundColor = getRandomColor()
+    }
+    
+    // 先调用一次
+    getCountTime()
+    setInterval(() => getCountTime(), 1000);
+
+     
+</script>
+</html>

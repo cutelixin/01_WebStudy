@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-修饰符的使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 语法：/表达式/修饰符
+    // i 正则匹配时字母不区分大小写
+    // g 匹配所有满足正则表达式的结果 
+
+    /* console.log(/^java$/i.test('java')) // true
+    console.log(/^java$/i.test('JAVA')) // false
+    console.log(/^a$/i.test('a'))     // true
+    console.log(/^a$/i.test('A'))     // true */
+
+    // replace 替换文本
+    // 字符串.replace(/表达式/,替换的字符串)
+    const str = 'java是一门编程语言，JAVA是什么'
+    // const res = str.replace(/java/ig,'react')
+    const res = str.replace(/java|JAVA/g,'react')       // | 为或
+    console.log(res)
+</script>
+</html>

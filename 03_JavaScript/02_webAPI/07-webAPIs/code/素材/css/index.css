@@ -1,0 +1,105 @@
+/* 顶部导航 */
+
+html{
+    scroll-behavior: smooth;
+}
+
+.xtx_sticky{
+    position: fixed;
+    top: -80px;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    background-color: #fff;
+    /* transition: all 0.4s; */
+}
+.xtx_sticky_wrapper{
+    width: 1240px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.xtx_sticky_logo a{
+    display: block;
+    width: 200px;
+    height: 80px;
+    background: url(../images/logo.png) no-repeat center;
+    background-size: 160px auto;
+}
+
+.xtx_sticky_navs{
+    margin: auto 0;
+}
+
+.xtx_sticky_navs ul{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.xtx_sticky_navs li{
+    margin: 0 20px;
+}
+
+.xtx_sticky_navs li a{
+    padding: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.xtx_sticky_navs li a:hover {
+    color: #27ba9b;
+    border-bottom: 1px solid #27ba9b;
+}
+
+
+.xtx_sticky_right{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.xtx_sticky_right::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+    width: 2px;
+    height: 16px;
+    background-color: #27ba9b;
+}
+
+.xtx_sticky_right a{
+    margin: 0 20px;
+}
+
+.xtx_sticky_right a:hover{
+    color: #27ba9b;
+}
+
+
+.backTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60px;
+    height: 80px;
+    position: fixed;
+    left: 50%;
+    bottom: 200px;
+    margin-left: 630px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.backIcon {
+    width: 24px;
+    height: 24px;
+    background: url("../images/sprites.png") no-repeat;
+    background-position: 0 -220px;
+    transform: rotate(-90deg);
+}

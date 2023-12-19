@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-5秒后自动跳转页面</title>
+</head>
+<body>
+    <a href="http://www.baidu.com">支付成功5秒自动跳转</a>
+</body>
+<script>
+
+    const a = document.querySelector('a')
+    let count = 5
+    let timer = setInterval(() => {
+        count--;
+        a.innerHTML =  `支付成功${count}秒自动跳转`
+        if(count<=0){
+            clearInterval(timer)
+            location.href = 'http://www.baidu.com'
+            return
+        }
+    }, 1000);
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-键盘事件类型</title>
+</head>
+<body>
+    <input type="text">
+
+    <script>
+        const input = document.querySelector('input')
+
+        /* input.addEventListener('keydown',function(){
+            console.log('键盘按下了')
+        })
+
+        input.addEventListener('keyup',function(){
+            console.log('键盘弹起了了')
+        }) */
+
+        input.addEventListener('input',function(e){
+            console.log('input',input.value)
+        })
+    </script>
+</body>
+</html>

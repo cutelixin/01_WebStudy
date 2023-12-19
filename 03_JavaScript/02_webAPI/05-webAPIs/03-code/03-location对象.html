@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-location</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="uname">
+        <input type="password" name="psw">
+        <button class="submit">submit</button>
+    </form>
+    <button class="reload">reload</button>
+</body>
+<script>
+    console.log('location',location)
+    // 1. href 经常使用 利用js方法跳转页面
+    console.log('location.href',location.href)
+    // location.href = 'http://www.baidu.com'
+    // 2. search 获取网址问号后的内容
+    console.log('location.search',location.search)
+    // 3. hash #后的内容
+    console.log('location.hash',location.hash)
+    // reload 刷新页面
+    const reload = document.querySelector('.reload')
+    reload.addEventListener('click',function(){
+        // location.reload()
+        location.reload(true) //强制刷新
+    })
+</script>
+</html>

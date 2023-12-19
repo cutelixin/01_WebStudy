@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-获取子节点</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+</body>
+<script>
+    // 获取父节点
+    /* const ul = document.querySelector('ul')
+    // const lis = ul.childNodes  // 少用
+    const lis = ul.children
+    console.log('lis',lis)
+    console.log('li',li) */
+
+    // 获取兄弟节点
+    const li2 = document.querySelector('ul li:nth-child(2)')
+    const li1 = li2.previousElementSibling
+    const li3 = li2.nextElementSibling
+    console.log('li2',li2)
+    console.log('li1',li1)
+    console.log('li3',li3)
+</script>
+</html>
