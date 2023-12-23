@@ -5,7 +5,7 @@ date: 2021-01-20 11:13:20
 
 > 以下是观看尚硅谷Vue课程所做的笔记。
 >
-> [尚硅谷React](https://www.bilibili.com/video/BV1Zy4y1K7SH/?spm_id_from=333.337.search-card.all.click)
+> [尚硅谷Vue](https://www.bilibili.com/video/BV1Zy4y1K7SH/?spm_id_from=333.337.search-card.all.click)
 
 # vue简介
 
