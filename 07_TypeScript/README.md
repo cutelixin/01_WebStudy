@@ -51,7 +51,7 @@ function sum(a:number,b:number):number{
 let c = true
 ```
 
-## 类型
+## 基本数据类型
 
   |  类型   |       例子        |              描述              |
   | :-----: | :---------------: | :----------------------------: |
@@ -260,7 +260,242 @@ let c = true
   }
 ```
 
+## 编译选项
 
+### 自动编译文件
+
+  - 编译文件时，使用 `tsc xxx.ts -w` 指令后，TS编译器会自动监视文件的变化，并在文件变化后对文件进行重新编译
+
+### 自动编译整个项目
+
+  - 在根目录下使用 `tsc --init`指令后，TS编译器会自动生成 `tsconfig.json` 文件
+
+  - `tsconfig.json` 是ts编译器的配置文件，ts编译器可以根据它的信息对代码进行编译
+
+  - 编译文件时，直接使用 `tsc` 指令，则可以自动将当前项目下的所有ts文件编译为js文件。
+
+### `tsconfig.json` 文件的配置项
+
+  - include
+
+    - 用来指定哪些ts文件需要被编译
+
+    - 默认值：["\*\*/\*"]
+
+    - 路径：** 表示任意目录
+        * 表示任意文件
+
+    - 示例：
+
+    ```json
+      // src 下的任意目录下的任意文件都会编译
+      "include": ["./src/**/*"],
+    ```
+
+  - exclude
+
+    - 用来指定哪些ts文件不需要被编译（可选）
+
+    - 默认值：["node_modules", "bower_components", "jspm_packages"]
+
+    - 示例：
+
+    ```json
+      "exclude": ["./src/hello/**/*"]
+    ```
+
+  - extends
+
+    - 定义被继承的配置文件
+
+    - 示例：
+
+      ```json
+        "extends": "./configs/base"
+      ```
+
+    - 上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息
+
+  - files 
+  
+    - 指定被编译文件的列表，只有需要编译的文件少时才会用到（类似于 include）
+
+    - 示例：
+
+    ```json
+      "files": [
+          "core.ts",
+          "sys.ts",
+          "types.ts",
+          "scanner.ts",
+          "parser.ts",
+          "utilities.ts",
+          "binder.ts",
+          "checker.ts",
+          "tsc.ts"
+        ]
+      ```
+
+  - compilerOptions
+
+    - 编译器选项 是配置文件中非常重要也比较复杂的配置选项
+
+    - 在compilerOptions中包含多个子选项，用来完成对编译的配置
+
+    - 项目选项
+
+      - target
+
+        - 指定ts文件被编译为的ES版本
+
+        - 可选值：'es3'（默认）, 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.
+
+        - 示例:
+
+        ```json
+          "compilerOptions": {
+              "target": "ES6"
+          }
+        ```
+      
+      - module
+
+        - 指定要使用的模块化规范
+
+        - 可选值：'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node16', 'nodenext'.
+
+        - 示例：
+
+        ```json
+          "compilerOptions": {
+            "module": "CommonJS"
+          }
+        ```
+
+      - lib
+
+        - 用来指定项目中要使用的库
+
+        - 可选值：'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'es2023', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost'...
+
+        - 示例：
+
+          ```json
+            "compilerOptions": {
+                "lib": ["ES6", "DOM"],
+            }
+          ```
+      - outDir
+
+        - 用来指定编译后所在的目录
+
+        - 默认情况下，编译后的js文件会和ts文件位于相同的目录，设置outDir后可以改变编译后文件的位置
+
+        - 示例：
+
+          ```json
+            "compilerOptions": {
+                "outDir": "dist"
+            }
+          ```
+
+        - 设置后编译后的js文件将会生成到dist目录
+
+      - outFile
+
+        - 用来将代码合并为一个文件
+
+        - 设置 outFile 后，所有的全局作用域中的代码都会合并到同一个文件中，如果module制定了None、System或AMD则会将模块一起合并到文件之中
+
+        - 示例：
+
+        ```json
+          "compilerOptions": {
+              "outFile": "dist/app.js"
+          }
+        ```
+
+      - rootDir
+
+        - 指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录
+
+        - 示例：
+
+          ```json
+            "compilerOptions": {
+                "rootDir": "./src"
+            }
+          ```
+
+      - allowJS
+
+        - 是否对 js 文件进行编译，默认是false
+
+      - checkJs
+
+        - 是否检查 js 代码是否符合语法规范，默认是false
+
+        - 示例：
+
+        ```json 
+          "compilerOptions": {
+              "allowJs": true,
+              "checkJs": true
+          }
+        ```
+
+      - removeComments
+
+        - 是否移除注释，默认是false
+
+      - noEmit
+
+        - 是否不生成编译后的文件（用的地方不多），默认是false
+
+      - sourceMap
+
+        - 是否生成sourceMap，默认是false
+
+      - 严格检查
+
+        - strict
+          - 所有严格检查的总开关，默认值为true
+        - alwaysStrict
+          - 总是以严格模式对代码进行编译
+        - noImplicitAny
+          - 禁止隐式的any类型
+        - noImplicitThis
+          - 禁止类型不明确的this
+        - strictBindCallApply
+          - 严格检查bind、call和apply的参数列表
+        - strictFunctionTypes
+          - 严格检查函数的类型
+        - strictNullChecks
+          - 严格的空值检查
+        - strictPropertyInitialization
+          - 严格检查属性是否初始化
+
+      - 额外检查
+
+        - noFallthroughCasesInSwitch
+          - 检查switch语句包含正确的break
+        - noImplicitReturns
+          - 检查函数没有隐式的返回值
+        - noUnusedLocals
+          - 检查未使用的局部变量
+        - noUnusedParameters
+          - 检查未使用的参数
+
+      - 高级
+
+        - allowUnreachableCode
+          - 检查不可达代码
+          - 可选值：
+            - true，忽略不可达代码
+            - false，不可达代码将引起错误
+        - noEmitOnError
+          - 有错误的情况下不进行编译
+          - 默认值：false
 
 
 
