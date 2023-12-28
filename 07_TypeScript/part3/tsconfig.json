@@ -1,0 +1,9 @@
+
+{
+  "compilerOptions": {
+    "target": "ES6",                                  
+    "module": "ES6",                                
+    // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+    "strict": true,                                      /* Enable all strict type-checking options. */                       /* Skip type checking all .d.ts files. */
+  }
+}

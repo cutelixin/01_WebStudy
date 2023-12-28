@@ -260,13 +260,13 @@ let c = true
   }
 ```
 
-## 编译选项
+# 编译选项
 
-### 自动编译文件
+## 自动编译文件
 
   - 编译文件时，使用 `tsc xxx.ts -w` 指令后，TS编译器会自动监视文件的变化，并在文件变化后对文件进行重新编译
 
-### 自动编译整个项目
+## 自动编译整个项目
 
   - 在根目录下使用 `tsc --init`指令后，TS编译器会自动生成 `tsconfig.json` 文件
 
@@ -274,7 +274,7 @@ let c = true
 
   - 编译文件时，直接使用 `tsc` 指令，则可以自动将当前项目下的所有ts文件编译为js文件。
 
-### `tsconfig.json` 文件的配置项
+## `tsconfig.json` 文件的配置项
 
   - include
 
@@ -498,12 +498,196 @@ let c = true
           - 默认值：false
 
 
+# 使用webpack打包ts代码
+
+## 使用步骤
+
+  1.初始化项目
+
+  - 进入根目录文件，使用指令 `npm init -y`，创建package.json文件
+
+  2.下载构建工具
+
+  - ```npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin```
+
+  - 共安装了7个包
+      - webpack
+        - 构建工具webpack
+      - webpack-cli
+        - webpack的命令行工具
+      - webpack-dev-server
+        - webpack的开发服务器
+      - typescript
+        - ts编译器
+      - ts-loader
+        - ts加载器，用于在webpack中编译ts文件
+      - html-webpack-plugin
+        - webpack中html插件，用来自动创建html文件
+      - clean-webpack-plugin
+        - webpack中的清除插件，每次构建都会先清除目录
+
+  3.根目录下创建webpack的配置文件 webpack.config.js
+
+  ```javascript
+      const path = require("path");
+      const HtmlWebpackPlugin = require("html-webpack-plugin");
+      const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+      
+      module.exports = {
+          optimization:{
+              minimize: false // 关闭代码压缩，可选
+          },
+          // 指定入口文件
+          entry: "./src/index.ts",
+          // 控制是否生成，以及如何生成 source ma
+          devtool: "inline-source-map",
+          // webpack-dev-server 提供了一个基本的 web serve
+          // 告诉 dev server 应从什么位置开始查找文件
+          devServer: {
+              contentBase: './dist'
+          },
+          // 指定打包文件所在的目录
+          output: {
+              // 指定打包文件的目录
+              path: path.resolve(__dirname, "dist"),
+              // 指定打包文件的名字
+              filename: "bundle.js",
+              // 告诉webpack不要使用箭头函数（低版本浏览器配置）
+              environment: {
+                  arrowFunction: false // 关闭webpack的箭头函数，可选
+              }
+          },
+           // 用来设置引用模块
+          resolve: {
+              extensions: [".ts", ".js"]
+          },
+          // 指定webpack打包时要使用的模块
+          module: {
+              // 指定加载规则
+              rules: [
+                  {
+                      // test 指定规则生效的文件
+                      test: /\.ts$/,
+                      // 要使用的loader
+                      use: {
+                        loader: "ts-loader"     
+                      },
+                      // 要排除的文件
+                      exclude: /node_modules/
+                  }
+              ]
+          },
+      
+          // 配置webpack插件
+          plugins: [
+              // 清除缓存的打包文件
+              new CleanWebpackPlugin(),
+              // 自动生成html文件配置
+              new HtmlWebpackPlugin({
+                  title:'自定义title',
+                  // 定义以某个文件为html文件模板
+                  template:'./src/index.html'
+              }),
+          ]
+      
+      }
+  ```
+
+  4.根目录下创建tsconfig.json，指令 `tsc --init`，根据需要修改配置。
+
+  ```json
+      {
+          "compilerOptions": {
+              "target": "ES2015",
+              "module": "ES2015",
+              "strict": true
+          }
+      }
+  ```
+
+  5.修改package.json添加如下配置
+
+  ```json
+      {
+        ...略...
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "build": "webpack --mode=production",
+          "start": "webpack server --open --mode=development"
+        },
+        ...略...
+      }
+  ```
+
+  6.在src下创建ts文件，并在并命令行执行```npm run build```对代码进行编译，或者执行```npm start```来启动开发服务器
 
 
+## Babel
 
+- 结合babel对代码进行转换，兼容到更多的浏览器，根据以下步骤使用babel
 
+  1.安装依赖包
 
+    - ```npm i -D @babel/core @babel/preset-env babel-loader core-js```
 
+    - 共安装了4个包，分别是：
+      - @babel/core
+        - babel的核心工具
+      - @babel/preset-env
+        - babel的预定义环境
+      - @babel-loader
+        - babel在webpack中的加载器
+      - core-js
+        - core-js用来使老版本的浏览器支持新版ES语法
 
+  2. 修改webpack.config.js配置文件
 
+     - ```javascript
+       ...略...
+       // 指定webpack打包时要使用的模块
+       module: {
+           // 指定加载规则
+           rules: [
+               {
+                   // test 指定规则生效的文件
+                   test: /\.ts$/,
+                   // 要使用的loader
+                   use: [
+                        // 配置babel
+                       {
+                           // 指定加载器
+                           loader: "babel-loader",
+                           options:{
+                               // 设置预定义环境
+                               presets: [
+                                   [
+                                      // 指定环境插件
+                                       "@babel/preset-env",
+                                       // 配置信息
+                                       {
+                                           // targets 需要兼容到的浏览器
+                                           "targets":{
+                                               "chrome": "58",
+                                               "ie": "11"
+                                           },
+                                           "corejs":"3",
+                                           // 使用corejs的方式 "usage" 表示按需加载
+                                           "useBuiltIns": "usage"
+                                       }
+                                   ]
+                               ]
+                           }
+                       },
+                       {
+                           loader: "ts-loader",
+       
+                       }
+                   ],
+                   exclude: /node_modules/
+               }
+           ]
+       }
+       ...略...
+       ```
 
+     - 如此一来，使用ts编译后的文件将会再次被babel处理，使得代码可以在大部分浏览器中直接使用，可以在配置选项的targets中指定要兼容的浏览器版本。

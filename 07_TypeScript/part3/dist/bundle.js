@@ -1,0 +1,1 @@
+!function(){"use strict";var o;console.log("hi"),console.log(10),o={name:"anna"},console.log(o),o={name:"lily",age:18},console.log(o)}();
